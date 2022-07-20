@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="botCommons">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../botCommons" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../botCommons" />
+      <root url="file://$PROJECT_DIR$/../botCommons/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../botCommons/src/test/java" />
+    </SOURCES>
+  </library>
+</component>
