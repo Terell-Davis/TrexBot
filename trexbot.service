@@ -1,0 +1,14 @@
+[Unit]
+Description=TrexBot - A General Discord Bot
+
+[Service]
+User=
+Group=
+WorkingDirectory=/opt/TrexBot/bin
+ExecStart=/usr/bin/sh /opt/TrexBot/bin/TrexBot
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
+
