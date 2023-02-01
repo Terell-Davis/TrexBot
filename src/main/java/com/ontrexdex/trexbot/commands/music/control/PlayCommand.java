@@ -9,6 +9,7 @@ import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
 import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
 import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.playlist.NowPlayingCommand;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
@@ -50,20 +51,12 @@ public class PlayCommand implements ICommand {
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
         PlayerManager manager = PlayerManager.getInstance();
         GuildMusicManager musicManager = manager.getGuildMusicManager(ctx.getGuild());
-        AudioPlayer player = musicManager.player;
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
 
-        if(manager.getGuildMusicManager(ctx.getGuild()).player.isPaused()){
-            manager.getGuildMusicManager(ctx.getGuild()).player.setPaused(false);
-            AudioTrackInfo info = player.getPlayingTrack().getInfo();
-            channel.sendMessageEmbeds(EmbedUtils.embedMessage(String.format(
-                    "**__Now Playing:__** [%s](%s)\n%s %s - %s %s",
-                    info.title,
-                    info.uri,
-                    player.isPaused() ? "\u23F8" : "🥞 ",
-                    formatTime(player.getPlayingTrack().getPosition()),
-                    formatTime(player.getPlayingTrack().getDuration()), " 🥞"
-            )).setColor(0xf98100).build()).queue();
+        if(musicManager.player.isPaused()){
+           musicManager.player.setPaused(false);
+            NowPlayingCommand playing = new NowPlayingCommand();
+            playing.handle(ctx);
             return;
         }
 

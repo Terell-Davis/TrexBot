@@ -39,9 +39,9 @@ public class NowPlayingCommand implements ICommand {
                     "**__Now Playing:__** [%s](%s)\n%s %s - %s %s",
                     info.title,
                     info.uri,
-                    player.isPaused() ? "\u23F8" : "🥞 ",
+                    player.isPaused() ? "\u23F8" : "▶ ",
                     formatTime(player.getPlayingTrack().getPosition()),
-                    formatTime(player.getPlayingTrack().getDuration()), " 🥞"
+                    formatTime(player.getPlayingTrack().getDuration()), " 🎶"
             )).setColor(0xf98100).build()).queue();
         }else{
             EmbedBuilder other = new EmbedBuilder();

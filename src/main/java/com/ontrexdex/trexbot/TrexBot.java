@@ -23,7 +23,7 @@ public class TrexBot {
 
         bot.addEventListener(new ReadyListener());
         bot.getPresence().setStatus(OnlineStatus.ONLINE);
-        bot.getPresence().setActivity(Activity.watching("Youtube " +
+        bot.getPresence().setActivity(Activity.watching("Dojima's Fist" +
                 Config.get("PREFIX") + "help"));
     }
 

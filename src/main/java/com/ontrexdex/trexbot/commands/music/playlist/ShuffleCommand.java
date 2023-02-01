@@ -1,5 +1,6 @@
 package com.ontrexdex.trexbot.commands.music.playlist;
 
+import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
 import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
@@ -61,12 +62,13 @@ public class ShuffleCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Shuffles the entire queue";
+        return "Takes all the music and shuffles it around!" + "\n"
+                + "`" + Config.get("prefix") + getName() + "`";
     }
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("sh", "shuf");
+        return Arrays.asList("sh", "shuf","moveitmoveit");
     }
 
     private String formatTime(long timeInMillis){

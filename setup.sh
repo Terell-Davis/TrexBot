@@ -18,7 +18,7 @@ else
   cp env-example .env
 fi
 
-echo "Discord API Key (press enter to skip): "
+echo "Discord API Key: "
 read discord_api_key
 if [ -n "$discord_api_key" ]; then
   sed -i "s/discordkey/$discord_api_key/g" .env
@@ -27,13 +27,13 @@ fi
 echo "Youtube API Key (press enter to skip): "
 read youtube_api_key
 if [ -n "$youtube_api_key" ]; then
-  sed -i "s/youtubeapikey/$youtube_api_key/g" .env
+  sed -i "s/ytapikey/$youtube_api_key/g" .env
 fi
 
 echo "Discord Webhook URL (press enter to skip): "
 read webhook_url
 if [ -n "$webhook_url" ]; then
-  sed -i "s/quotechannel/$webhook_url/g" .env
+  sed -i "s/quote/$webhook_url/g" .env
 fi
 
 echo "Bot Owner's Discord ID (press enter to skip): "

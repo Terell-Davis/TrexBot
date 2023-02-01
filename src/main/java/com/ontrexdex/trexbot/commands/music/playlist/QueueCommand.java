@@ -23,11 +23,15 @@ public class QueueCommand implements ICommand {
         PlayerManager playerManager = PlayerManager.getInstance();
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
         BlockingQueue<AudioTrack> queue = musicManager.scheduler.getQueue();
+        // List<String> args = ctx.getArgs();
 
         if (queue.isEmpty()) {
             channel.sendMessage("There is nothing here but me and my thoughts").queue();
             return;
         }
+
+        // A reminder to myself: Make it where people can see past 20 when they run the command
+        // Example being t-q 40 will show tracks 20 - 40. The limit is there so it won't spam the channel
 
         int trackCount = Math.min(queue.size(), 20);
         List<AudioTrack> tracks = new ArrayList<>(queue);
@@ -40,7 +44,7 @@ public class QueueCommand implements ICommand {
 
             builder.setColor(0xf98100);
             builder.appendDescription(String.format(
-                    (i + 1) + ". %s - [%s]🥞\n",
+                    (i + 1) + ". %s - [%s] 🎵\n",
                     info.title,
                     formatTime(track.getDuration())
             ));
