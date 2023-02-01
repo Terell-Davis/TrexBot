@@ -59,7 +59,7 @@ fi
 
 dos2unix ./gradlew
 ./gradlew clean installShadowDist
-mv build/install/TrexBot-shadow/bin/* bin
+mv build/install/TrexBot-shadow/bin bin
 rm -rf lib
 mv build/install/TrexBot-shadow/lib lib
 echo "Done building Trexbot"
