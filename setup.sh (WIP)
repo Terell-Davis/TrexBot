@@ -1,10 +1,4 @@
 #!/bin/bash
-
-if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root or using sudo"
-  exit
-fi
-
 # The check isnt working I will fix this later...... maybe....
 #echo "Checking if Gradle and dos2unix are installed..."
 #if ! command -v gradle &> /dev/null; then
@@ -62,29 +56,11 @@ if ! command -v dos2unix &> /dev/null; then
   echo "dos2unix not found. Exiting..."
   exit 1
 fi
+
 dos2unix ./gradlew
 ./gradlew clean runShadow
 mv build/install/Trexbot-shadow/bin/* bin
 rm -rf lib
 mv build/install/Trexbot-shadow/lib lib
 echo "Done building Trexbot"
-
-echo "Do you want to install the provided systemd script (trexbot.service)? (y/n): "
-read install_systemd
-if [ "$install_systemd" == "y" ]; then
-  echo "Enter the user for the service: "
-  read service_user
-  sed -i "s/User=.*/User=$service_user/g" trexbot.service
-  echo "Enter the group for the service: "
-  read service_group
-  sed -i "s/Group=.*/Group=$service_group/g" trexbot.service
-  echo "Copying trexbot.service to /etc/systemd/system/..."
-  sudo cp trexbot.service /etc/systemd/system/
-  echo "Do you want the bot to start on system startup? (y/n): "
-  read start_on_startup
-  if [ "$start_on_startup" == "y" ]; then
-    echo "Enabling trexbot.service on system startup..."
-    sudo systemctl enable trexbot.service
-  fi
-fi
 
