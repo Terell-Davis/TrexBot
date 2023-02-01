@@ -1,9 +1,14 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+mainClassName = ' com.ontrexdex.trexbot.TrexBot'
+
+version '2.0'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -37,3 +42,13 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.ontrexdex.trexbot.TrexBot'
+        )
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
