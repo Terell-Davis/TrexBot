@@ -1,0 +1,5 @@
+TOKEN=discordkey
+PREFIX=t-
+OWNER_ID=discordownerid
+WEBHOOK_URL=quotechannel
+YOUTUBE=youtubeapikey
