@@ -58,7 +58,7 @@ if ! command -v dos2unix &> /dev/null; then
 fi
 
 dos2unix ./gradlew
-./gradlew clean runShadow
+./gradlew clean installShadowDist
 mv build/install/Trexbot-shadow/bin/* bin
 rm -rf lib
 mv build/install/Trexbot-shadow/lib lib
