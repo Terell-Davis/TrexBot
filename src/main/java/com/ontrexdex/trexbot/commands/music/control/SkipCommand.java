@@ -35,10 +35,7 @@ public class SkipCommand implements ICommand {
                 }
 
                 scheduler.nextTrack();
-                EmbedBuilder skip = new EmbedBuilder();
-                skip.setColor(0xf98100);
-                skip.setDescription("Skipping current track");
-                channel.sendMessageEmbeds(skip.build()).queue();
+                channel.sendMessage("Skipping current track").queue();
 
                 NowPlayingCommand playing = new NowPlayingCommand();
                 playing.handle(ctx);

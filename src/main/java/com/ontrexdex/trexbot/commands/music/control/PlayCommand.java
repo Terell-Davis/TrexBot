@@ -91,7 +91,7 @@ public class PlayCommand implements ICommand {
 
         if(memberVoiceState.inAudioChannel()) {
             manager.loadAndPlay(channel, input);
-            manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(80);
+            musicManager.player.setVolume(80);
         }else{
             EmbedBuilder other = new EmbedBuilder();
             other.setColor(0xf98100);
@@ -137,7 +137,7 @@ public class PlayCommand implements ICommand {
     @Override
     public String getHelp() {
         return "Can play music from Youtube, Soundcloud, & Bandcamp!\n" +
-                "`" + Config.get("prefix") + getName() + " <url>`";
+                "`" + Config.get("prefix") + getName() + " <url> **or** [Song Name]`";
     }
 
     private String formatTime(long timeInMillis) {
