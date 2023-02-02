@@ -28,7 +28,7 @@ public class ReadyListener extends ListenerAdapter {
 
         if(user.isBot() || message.isWebhookMessage()){return;}
 
-        String prefix = "t-";
+        String prefix = Config.get("prefix");
         String raw = message.getMessage().getContentRaw();
 
         //Detects prefix and passes it to command manager

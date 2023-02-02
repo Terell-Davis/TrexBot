@@ -37,7 +37,7 @@ public class PlayCommand implements ICommand {
                     GsonFactory.getDefaultInstance(),
                     null
             )
-                    .setApplicationName("Jokerbot - Java Discord bot")
+                    .setApplicationName("Trexbot - Java Discord bot")
                     .build();
         } catch (Exception e) {
             e.printStackTrace();
