@@ -2,6 +2,8 @@ package com.ontrexdex.trexbot;
 
 import com.ontrexdex.trexbot.commands.*;
 import com.ontrexdex.trexbot.commands.music.control.*;
+import com.ontrexdex.trexbot.commands.music.playlist.DeleteTrackCommand;
+import com.ontrexdex.trexbot.commands.music.playlist.MoveTrackCommand;
 import com.ontrexdex.trexbot.commands.music.playlist.QueueCommand;
 import com.ontrexdex.trexbot.commands.music.playlist.ShuffleCommand;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -21,9 +23,8 @@ public class CommandManager {
         // Music Focused Commands
         addCommand((new PlayCommand())); addCommand(new PauseCommand()); addCommand(new NowPlayingCommand()); addCommand(new EndCommand());
         addCommand(new SkipCommand()); addCommand(new ResumeCommand()); addCommand(new QueueCommand());
-        addCommand(new ShuffleCommand());
-
-        //addCommand(new DeleteTrackCommand()); No Clue why this break my freaking help command so it's disabled for now
+        addCommand(new ShuffleCommand()); addCommand(new DeleteTrackCommand()); // Thank you Brian
+        addCommand(new MoveTrackCommand());
 
         // Helpful Commands
         addCommand(new FixTwitCommand());
