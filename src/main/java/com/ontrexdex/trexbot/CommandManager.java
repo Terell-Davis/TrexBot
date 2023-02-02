@@ -61,7 +61,7 @@ public class CommandManager {
 
     void handle(MessageReceivedEvent message) {
         String[] split = message.getMessage().getContentRaw()
-                .replaceFirst("(?i)" + Pattern.quote("t-"), "")
+                .replaceFirst("(?i)" + Pattern.quote(Config.get("PREFIX")), "")
                 .split("\\s+");
         String invoke = split[0].toLowerCase();
         ICommand cmd = this.getCommand(invoke);
