@@ -1,11 +1,5 @@
 #!/bin/bash
 # The check isnt working I will fix this later...... maybe....
-#echo "Checking if Gradle and dos2unix are installed..."
-#if ! command -v gradle &> /dev/null; then
-#    echo "Gradle not found, please install it and try again"
-#    exit 1
-#fi
-
 #if ! command -v dos2unix &> /dev/null; then
 #    echo "dos2unix not found, please install it and try again"
 #    exit 1
