@@ -57,6 +57,6 @@ mv build/install/TrexBot-shadow/bin bin
 rm -rf lib
 mv build/install/TrexBot-shadow/lib lib
 
-mv .env bin/.env
+cp .env bin/.env
 echo "Done building Trexbot"
 
