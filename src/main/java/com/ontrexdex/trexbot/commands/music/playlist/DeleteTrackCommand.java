@@ -81,7 +81,7 @@ public class DeleteTrackCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "DeleteTrack";
+        return "deletetrack";
     }
 
     @Override
