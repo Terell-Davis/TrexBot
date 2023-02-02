@@ -1,4 +1,4 @@
-# Trexbot
+# Trexbot - WIP
 A general purpose discord bot I use in personal/friends servers.
 Also has music support for Youtube, SoundCloud, Bandcamp.
 
