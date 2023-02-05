@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+import javax.sound.midi.MetaMessage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class QuoteCommand implements ICommand {
         final List<String> args = ctx.getArgs();
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
         final Message message = ctx.getMessage();
-        final Member target = (Member) message.getMentions().getUsers();
+        final Member target = message.getMentions().getMembers().get(0);
 
         if (args.size() < 2 || message.getMentions().equals("")) {
             EmbedBuilder quote = new EmbedBuilder();
