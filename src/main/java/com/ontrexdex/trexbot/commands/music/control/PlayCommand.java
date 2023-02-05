@@ -15,6 +15,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
@@ -61,13 +62,15 @@ public class PlayCommand implements ICommand {
         }
 
         if ((ctx.getArgs().isEmpty())) {
+
             EmbedBuilder pause = new EmbedBuilder();
             pause.setColor(0xf98100);
             pause.setTitle("Please enter what you want to play.");
             pause.setDescription("Usage: `" + Config.get("PREFIX") + "play [url/song name]`");
             channel.sendMessageEmbeds(pause.build()).queue();
             return;
-        }
+            }
+
 
         String input = String.join(" ", ctx.getArgs());
 
@@ -138,14 +141,6 @@ public class PlayCommand implements ICommand {
     public String getHelp() {
         return "Can play music from Youtube, Soundcloud, & Bandcamp!\n" +
                 "`" + Config.get("prefix") + getName() + " <url> **or** [Song Name]`";
-    }
-
-    private String formatTime(long timeInMillis) {
-        final long hours = timeInMillis / TimeUnit.HOURS.toMillis(1);
-        final long minutes = timeInMillis / TimeUnit.MINUTES.toMillis(1);
-        final long seconds = timeInMillis % TimeUnit.MINUTES.toMillis(1) / TimeUnit.SECONDS.toMillis(1);
-
-        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
     @Override
