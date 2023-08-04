@@ -5,7 +5,7 @@ import com.ontrexdex.trexbot.commands.music.control.JoinCommand;
 import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.io.File;
@@ -50,7 +50,7 @@ public class SoundBoardCommand implements ICommand {
                 list.appendDescription((counter + ". " + soundname.replace(".mp3", "") + "\n"));
             }
 
-            ctx.getChannel().sendMessageEmbeds(list.build()).queue();
+            channel.sendMessageEmbeds(list.build()).queue();
             return;
         }
 
@@ -59,7 +59,7 @@ public class SoundBoardCommand implements ICommand {
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
         assert memberVoiceState != null;
         if(memberVoiceState.inAudioChannel()) {
-            manager.loadAndPlay((TextChannel) ctx.getChannel(), play);
+            manager.loadAndPlay((TextChannel) channel, play);
             manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(105);
         }
     }

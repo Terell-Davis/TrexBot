@@ -6,8 +6,8 @@ import com.ontrexdex.trexbot.commands.ICommand;
 import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
 import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
 import me.duncte123.botcommons.messaging.EmbedUtils;
-import net.dv8tion.jda.api.entities.AudioChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.AudioChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.util.Arrays;
@@ -38,7 +38,8 @@ public class EndCommand implements ICommand {
         musicManager.scheduler.getQueue().clear();
         musicManager.player.stopTrack();
         musicManager.player.setPaused(false);
-        ctx.getChannel().sendMessageEmbeds(EmbedUtils.embedMessage(String.format(
+
+        channel.sendMessageEmbeds(EmbedUtils.embedMessage(String.format(
                 "🛑 Stopping song and Clearing the queue"
         )).setColor(0xf98100).build()).queue();
     }

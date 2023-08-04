@@ -10,14 +10,10 @@ import com.ontrexdex.trexbot.commands.ICommand;
 import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
 import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
 import com.ontrexdex.trexbot.commands.music.playlist.NowPlayingCommand;
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
-import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
-
 import javax.annotation.Nullable;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,13 +24,14 @@ import java.util.concurrent.TimeUnit;
 
 public class PlayCommand implements ICommand {
     private final YouTube youTube;
-
     public PlayCommand() {
         YouTube temp = null;
+
+
         try {
             temp = new YouTube.Builder(
                     GoogleNetHttpTransport.newTrustedTransport(),
-                    GsonFactory.getDefaultInstance(),
+                    GsonFactory.getDefaultInstance() ,
                     null
             )
                     .setApplicationName("Trexbot - Java Discord bot")
@@ -114,10 +111,10 @@ public class PlayCommand implements ICommand {
     private String searchYoutube(String input) {
         try {
             List<SearchResult> results = youTube.search()
-                    .list(Collections.singletonList("id,snippet"))
+                    .list("id,snippet")
                     .setQ(input)
                     .setMaxResults(1L)
-                    .setType(Collections.singletonList("video"))
+                    .setType("video")
                     .setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)")
                     .setKey(Config.get("YOUTUBE"))
                     .execute()

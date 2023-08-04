@@ -8,7 +8,8 @@ import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class VolumeCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
+        @Deprecated
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
         final List<String> args = ctx.getArgs();
         PlayerManager manager = PlayerManager.getInstance();
@@ -38,7 +40,7 @@ public class VolumeCommand implements ICommand {
             usage.setColor(0xff3923);
             usage.setTitle("Specify Volume");
             usage.setDescription("Usage: `" + Config.get("prefix") + "Volume [volume]`");
-            ctx.getChannel().sendMessageEmbeds(usage.build()).queue();
+            channel.sendMessageEmbeds(usage.build()).queue();
             return;
         }
 
@@ -48,14 +50,14 @@ public class VolumeCommand implements ICommand {
                 EmbedBuilder success = new EmbedBuilder();
                 success.setColor(0xf98100);
                 success.setTitle("🔊 Volume set to:" + args.get(0));
-                ctx.getChannel().sendMessageEmbeds(success.build()).queue();
+                channel.sendMessageEmbeds(success.build()).queue();
             } catch (IllegalArgumentException e) {
                 if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
                     EmbedBuilder error = new EmbedBuilder();
                     error.setColor(0xf98100);
                     error.setTitle("⛔ The hell did you put to get this?");
                     error.setDescription("Really what did you do??????");
-                    ctx.getChannel().sendMessageEmbeds(error.build()).queue();
+                    channel.sendMessageEmbeds(error.build()).queue();
                 }
             }
         }else{

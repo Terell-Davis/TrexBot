@@ -10,7 +10,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,7 @@ public class DeleteTrackCommand implements ICommand {
             usage.setColor(0xf98100);
             usage.setTitle("Specify track to delete");
             usage.setDescription("Usage: `" + Config.get("prefix") + "deletetrack [Track #]`");
-            ctx.getChannel().sendMessageEmbeds(usage.build()).queue();
+            channel.sendMessageEmbeds(usage.build()).queue();
             return;
         }
 
@@ -42,7 +42,7 @@ public class DeleteTrackCommand implements ICommand {
             EmbedBuilder empty = new EmbedBuilder();
             empty.setColor(0xf98100);
             empty.setDescription("There is nothing here but me and my thoughts!");
-            ctx.getChannel().sendMessageEmbeds(empty.build()).queue();
+            channel.sendMessageEmbeds(empty.build()).queue();
             return;
         }
 
@@ -52,7 +52,7 @@ public class DeleteTrackCommand implements ICommand {
                 EmbedBuilder all = new EmbedBuilder();
                 all.setColor(0xf98100);
                 all.setTitle("Clearing entire queue!");
-                ctx.getChannel().sendMessageEmbeds(all.build()).queue();
+                channel.sendMessageEmbeds(all.build()).queue();
             } else {
                 List<AudioTrack> tracks = new ArrayList<>(queue);
                 AudioTrack track = tracks.get(Integer.parseInt(args.get(0)) - 1);

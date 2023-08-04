@@ -2,8 +2,9 @@ package com.ontrexdex.trexbot;
 
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.events.ReadyEvent;
+
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ public class ReadyListener extends ListenerAdapter {
     //To confirm if bot is online.
     @Override
     public void onReady(@Nonnegative ReadyEvent event){
-        LOGGER.info("{} is ready", event.getJDA().getSelfUser().getAsTag());
+        LOGGER.info("{} is ready", event.getJDA().getSelfUser());
     }
 
     //Listens to messages users send
@@ -38,10 +39,9 @@ public class ReadyListener extends ListenerAdapter {
 
         //Shutdowns the bot through discord
         if(raw.equalsIgnoreCase(prefix + "shutdown") && user.getId().equals(Config.get("OWNER_ID"))){
-            LOGGER.info("Shutting Down");
+            LOGGER.info("Shutting Down.. Goodbye");
             message.getJDA().shutdown();
             BotCommons.shutdown(message.getJDA());
-            return;
         }
 
     }

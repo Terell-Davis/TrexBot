@@ -3,7 +3,8 @@ package com.ontrexdex.trexbot.commands;
 import com.ontrexdex.trexbot.CommandManager;
 import com.ontrexdex.trexbot.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+
 
 import java.util.Arrays;
 import java.util.List;

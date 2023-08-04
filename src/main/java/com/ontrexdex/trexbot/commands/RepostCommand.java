@@ -1,7 +1,7 @@
 package com.ontrexdex.trexbot.commands;
 
 import com.ontrexdex.trexbot.Config;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.utils.FileUpload;
 
 import java.io.File;
