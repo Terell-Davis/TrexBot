@@ -23,7 +23,7 @@ public class TrexBot {
 
         bot.addEventListener(new ReadyListener());
         bot.getPresence().setStatus(OnlineStatus.ONLINE);
-        bot.getPresence().setActivity(Activity.playing("Sonic Adventure " +
+        bot.getPresence().setActivity(Activity.playing("LoZ:Totk " +
                 Config.get("PREFIX") + "help"));
     }
 
