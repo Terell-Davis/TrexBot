@@ -15,7 +15,7 @@ public class FixTwitCommand implements ICommand{
         Message Twitlink = ctx.getMessage().getReferencedMessage();
         String link = Twitlink.getContentRaw();
 
-        String fixed = link.replace("twitter.com", "fxtwitter.com");
+        String fixed = link.replace("x.com", "fxtwitter.com");
         channel.sendMessage(fixed).queue();
 
     }

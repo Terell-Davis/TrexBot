@@ -5,6 +5,7 @@ build
 out
 target
 lib
+bin\main\com\ontrexdex\trexbot\commands\assets\sounds
 
 .env
 

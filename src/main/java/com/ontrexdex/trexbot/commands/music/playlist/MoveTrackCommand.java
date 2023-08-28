@@ -1,6 +1,5 @@
 package com.ontrexdex.trexbot.commands.music.playlist;
 
-import com.google.api.services.youtube.model.Channel;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
