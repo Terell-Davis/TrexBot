@@ -1,44 +1,56 @@
-# Trexbot - WIP
-A general purpose discord bot I use in personal/friends servers.
-Also has music support for Youtube, SoundCloud, Bandcamp.
+# TrexBot
+TrexBot is a versatile, general-purpose Discord bot designed for personal and friends' servers. While its primary feature is music playback support from platforms like YouTube, SoundCloud, and Bandcamp, it's also capable of a wide range of other functions. This README outlines the prerequisites, installation, and setup instructions for running TrexBot.
 
+## What's Coming?
 
-<h3>What's Coming?</h1>
-
-- TBD
-- If you have any suggestions
+- Features are currently being planned.
+- If you have any suggestions, feel free to open an issue or submit a pull request.
 
 ## Prerequisites:
 
-#### API Keys
-* Discord - https://discord.com/developers
-* Youtube api
-* Discord Webhook for ```QuoteCommand.java```(Optional) 
+### API Keys
+To function correctly, TrexBot requires API keys from the following services:
 
-Keys must be entered into ```.env```
+* Discord - Obtainable at [Discord Developer Portal](https://discord.com/developers)
+* YouTube API
+* Discord Webhook for `QuoteCommand.java` (Optional)
 
-#### Requirements
+These keys should be entered into a `.env` file at the root of the project.
 
-* Installation of Jdk 1.8_342 (higher might work but I have not tested)
-* Gradle 
-* 
+### Requirements
 
-Install dependancies:
+#### Software Requirements
 
-For Linux:
-* Jdk 8: `sudo apt install openjdk-8-jdk`
-* Gradle 6.5 or higher: https://docs.gradle.org/current/userguide/installation.html
-* Dos2Unix: `sudo apt isntall dos2unix`(if using [script name])
+* JDK 17 (Earlier versions like JDK 8 might work, but JDK 17 is recommended for the best compatibility)
+* Gradle (6.5 or higher recommended)
+* dos2unix (Optional, for Linux users running specific scripts)
 
-For Windows:
-* TBD
+#### Installation Instructions
 
-### Building
-- setup.sh
+**For Linux:**
 
-### Installing - Self hosting (Systemd)
+- JDK 17: `sudo apt install openjdk-17-jdk`
+- Gradle: Instructions for installing Gradle can be found at [Gradle's Installation Guide](https://docs.gradle.org/current/userguide/installation.html).
+- Dos2Unix: `sudo apt install dos2unix` (useful for script conversion if needed)
 
-1. Download release if available, alternatively download repository zip
-2. Run `setup.sh`
-3. `nano /etc/systemd/trexbot.service`
-4. See configuration options in /config/config.py
+**For Windows:**
+
+- Instructions for installing JDK 17 and Gradle on Windows can be found on their respective official websites. Ensure environment variables are set correctly for both tools.
+
+### Building and Installing
+
+1. **Building:** The project can be built using the provided `setup.sh` script. This script automates the process of setting up your environment and compiling the bot.
+   
+2. **Self-Hosting (Systemd):**
+   - Download the latest release from the repository or the zip file if a release isn't available.
+   - Run `setup.sh` to prepare the bot for operation.
+   - Create a systemd service file for TrexBot by editing `/etc/systemd/system/trexbot.service`. Sample configurations and service files can be found in the `/config` directory.
+
+### Multi-Purpose Functionality
+TrexBot is more than just a music bot. It's designed to be a multi-purpose tool that can enhance your Discord server's functionality. Whether you're looking to play music, manage server tasks, or integrate with other APIs, TrexBot aims to provide a comprehensive solution. We're always looking to expand its capabilities, so your suggestions and contributions are welcome.
+
+### Contributing
+We welcome contributions and suggestions! If you have ideas for new features or improvements, please open an issue or submit a pull request on [GitHub](https://github.com/Terell-Davis/TrexBot).
+
+### License
+Specify your project's license here.
