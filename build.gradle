@@ -1,16 +1,18 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 mainClassName = ' com.ontrexdex.trexbot.TrexBot'
 
 version '2.0'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         name 'm2-duncte123'
@@ -26,18 +28,18 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
 
     implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
-    implementation("net.dv8tion:JDA:5.0.0-beta.12")
-    implementation group: 'me.duncte123', name: 'botCommons', version: 'beta_3.0.3'
-    implementation 'dev.arbjerg:lavaplayer:2.0.1'
-    //implementation 'com.github.walkyst:lavaplayer-fork:1.4.3'
+    implementation("net.dv8tion:JDA:5.0.0-beta.21")
+    implementation group: 'me.duncte123', name: 'botCommons', version: '3.1.18'
+    //implementation 'dev.arbjerg:lavaplayer:2.1.1'
+    implementation 'dev.arbjerg:lavaplayer:19e815bd83244545af3f9bee822190fc56a62e21-SNAPSHOT' //temp fix use local repo with pull #93
     implementation group: 'com.google.apis', name: 'google-api-services-youtube', version: 'v3-rev222-1.25.0'
-    implementation group: 'com.google.http-client', name: 'google-http-client-gson', version: '1.43.3'
-    implementation("club.minnced:discord-webhooks:0.8.2")
-    implementation('ch.qos.logback:logback-classic:1.4.8')
+    implementation group: 'com.google.http-client', name: 'google-http-client-gson', version: '1.44.1'
+    implementation("club.minnced:discord-webhooks:0.8.4")
+    implementation('ch.qos.logback:logback-classic:1.5.3')
 }
 
 test {
@@ -53,3 +55,7 @@ jar {
 }
 
 compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
+}
