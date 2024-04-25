@@ -21,7 +21,7 @@ These keys should be entered into a `.env` file at the root of the project.
 
 #### Software Requirements
 
-* JDK 17 (Earlier versions like JDK 8 might work, but JDK 17 is recommended for the best compatibility)
+* JDK 11 (Earlier versions like JDK 17 might work, but JDK 11 is was used for testing)
 * Gradle (6.5 or higher recommended)
 * dos2unix (Optional, for Linux users running specific scripts)
 
@@ -29,13 +29,13 @@ These keys should be entered into a `.env` file at the root of the project.
 
 **For Linux:**
 
-- JDK 17: `sudo apt install openjdk-17-jdk`
+- JDK 11: `sudo apt install openjdk-11-jdk`
 - Gradle: Instructions for installing Gradle can be found at [Gradle's Installation Guide](https://docs.gradle.org/current/userguide/installation.html).
 - Dos2Unix: `sudo apt install dos2unix` (useful for script conversion if needed)
 
 **For Windows:**
 
-- Instructions for installing JDK 17 and Gradle on Windows can be found on their respective official websites. Ensure environment variables are set correctly for both tools.
+- Instructions for installing JDK 11 and Gradle on Windows can be found on their respective official websites. Ensure environment variables are set correctly for both tools.
 
 ### Building and Installing
 
