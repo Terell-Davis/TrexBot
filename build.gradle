@@ -8,8 +8,8 @@ mainClassName = ' com.ontrexdex.trexbot.TrexBot'
 
 version '2.0'
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenLocal()
@@ -34,8 +34,8 @@ dependencies {
     implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
     implementation("net.dv8tion:JDA:5.0.0-beta.21")
     implementation group: 'me.duncte123', name: 'botCommons', version: '3.1.18'
-    //implementation 'dev.arbjerg:lavaplayer:2.1.1'
-    implementation 'dev.arbjerg:lavaplayer:19e815bd83244545af3f9bee822190fc56a62e21-SNAPSHOT' //temp fix use local repo with pull #93
+    implementation 'com.github.lavalink-devs.lavaplayer-youtube-source:plugin:1.0.5'
+    implementation 'dev.arbjerg:lavaplayer:2.1.1'
     implementation group: 'com.google.apis', name: 'google-api-services-youtube', version: 'v3-rev222-1.25.0'
     implementation group: 'com.google.http-client', name: 'google-http-client-gson', version: '1.44.1'
     implementation("club.minnced:discord-webhooks:0.8.4")
