@@ -14,6 +14,9 @@ targetCompatibility = JavaVersion.VERSION_17
 repositories {
     mavenLocal()
     mavenCentral()
+    maven{
+        url 'https://maven.lavalink.dev/releases'
+    }
     maven {
         name 'm2-duncte123'
         url 'https://m2.duncte123.dev/releases'
@@ -32,12 +35,12 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
 
     implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
-    implementation("net.dv8tion:JDA:5.0.0-beta.21")
+    implementation("net.dv8tion:JDA:5.0.2")
     implementation group: 'me.duncte123', name: 'botCommons', version: '3.1.18'
-    implementation 'com.github.lavalink-devs.lavaplayer-youtube-source:plugin:1.0.5'
-    implementation 'dev.arbjerg:lavaplayer:2.1.1'
+    implementation 'dev.lavalink.youtube:v2:1.7.1'
+    implementation 'dev.arbjerg:lavaplayer:2.2.1'
     implementation group: 'com.google.apis', name: 'google-api-services-youtube', version: 'v3-rev222-1.25.0'
-    implementation group: 'com.google.http-client', name: 'google-http-client-gson', version: '1.44.1'
+    implementation group: 'com.google.http-client', name: 'google-http-client-gson', version: '1.44.2'
     implementation("club.minnced:discord-webhooks:0.8.4")
     implementation('ch.qos.logback:logback-classic:1.5.3')
 }
