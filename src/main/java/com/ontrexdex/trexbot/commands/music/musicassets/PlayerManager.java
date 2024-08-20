@@ -8,9 +8,7 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import dev.lavalink.youtube.YoutubeAudioSourceManager;
-import dev.lavalink.youtube.clients.Android;
-import dev.lavalink.youtube.clients.Music;
-import dev.lavalink.youtube.clients.Web;
+import dev.lavalink.youtube.clients.*;
 import dev.lavalink.youtube.clients.skeleton.Client;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -29,8 +27,9 @@ public class PlayerManager {
 
         this.playerManager = new DefaultAudioPlayerManager();
 
-        YoutubeAudioSourceManager youtube =
-                new YoutubeAudioSourceManager(true, new Client[] { new Music(), new Web(), new Android() });
+        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(
+                true, new Client[] { new MusicWithThumbnail(), new WebWithThumbnail(), new AndroidTestsuiteWithThumbnail() });
+
         playerManager.registerSourceManager(youtube);
 
         AudioSourceManagers.registerRemoteSources(playerManager);
