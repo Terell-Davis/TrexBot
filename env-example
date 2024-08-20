@@ -3,3 +3,4 @@ PREFIX=t-
 OWNER_ID=ownerid
 WEBHOOK_URL=quote
 YOUTUBE=ytapikey
+ASSETS=
