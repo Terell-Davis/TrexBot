@@ -15,7 +15,7 @@ public class FixTwitCommand implements ICommand{
         Message Twitlink = ctx.getMessage().getReferencedMessage();
         String link = Twitlink.getContentRaw();
 
-        String fixed = link.replace("x.com", "vxtwitter.com");
+        String fixed = link.replace("x.com", "fixvx.com");
         channel.sendMessage(fixed).queue();
 
     }
@@ -33,6 +33,6 @@ public class FixTwitCommand implements ICommand{
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("fx", "vx", "whyyoudothistwitter", "badtwitter");
+        return Arrays.asList("fx", "vx", "fxvx", "xisastupidname", "fixupx");
     }
 }
