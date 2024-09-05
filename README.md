@@ -21,7 +21,7 @@ These keys should be entered into a `.env` file at the root of the project.
 
 #### Software Requirements
 
-* JDK 11 (Earlier versions like JDK 17 might work, but JDK 11 is was used for testing)
+* JDK 11 (Later versions like JDK 17 might work, but JDK 11 is was used for testing)
 * Gradle (6.5 or higher recommended)
 * dos2unix (Optional, for Linux users running specific scripts)
 
