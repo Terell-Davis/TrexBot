@@ -17,7 +17,6 @@ import java.util.List;
 public class VolumeCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
-        @Deprecated
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
         final List<String> args = ctx.getArgs();
         PlayerManager manager = PlayerManager.getInstance();
