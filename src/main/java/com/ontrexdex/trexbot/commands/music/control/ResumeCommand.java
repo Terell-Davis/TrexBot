@@ -3,11 +3,12 @@ package com.ontrexdex.trexbot.commands.music.control;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -27,7 +28,7 @@ public class ResumeCommand implements ICommand {
 
         if (player.getPlayingTrack() == null) {
             EmbedBuilder pause = new EmbedBuilder();
-            pause.setColor(0xf98100);
+            pause.setColor(0xff3b3b);
             pause.setDescription("The player isn't playing anything.");
             channel.sendMessageEmbeds(pause.build()).queue();
             return;
@@ -44,10 +45,10 @@ public class ResumeCommand implements ICommand {
                     player.isPaused() ? "\u23F8" : "🥞 ",
                     formatTime(player.getPlayingTrack().getPosition()),
                     formatTime(player.getPlayingTrack().getDuration()), " 🥞"
-            )).setColor(0xf98100).build()).queue();
+            )).setColor(0x88C0D0).build()).queue();
         }else{
             EmbedBuilder other = new EmbedBuilder();
-            other.setColor(0xf98100);
+            other.setColor(0xff3b3b);
             other.setDescription("Please join a voice channel to use this command!");
             channel.sendMessageEmbeds(other.build()).queue();
         }
@@ -69,7 +70,7 @@ public class ResumeCommand implements ICommand {
     @Override
     public String getHelp() {
         return "Resumes the currently paused song" + "\n"
-                + "`" + Config.get("prefix") + getName() + "`";
+                + Config.get("prefix") + getName();
     }
 
     @Override

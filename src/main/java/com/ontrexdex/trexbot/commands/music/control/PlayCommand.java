@@ -7,17 +7,21 @@ import com.google.api.services.youtube.model.SearchResult;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import com.ontrexdex.trexbot.commands.music.playlist.NowPlayingCommand;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
+
 import javax.annotation.Nullable;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PlayCommand implements ICommand {
@@ -58,7 +62,7 @@ public class PlayCommand implements ICommand {
 
         if ((ctx.getArgs().isEmpty())) {
             EmbedBuilder pause = new EmbedBuilder();
-            pause.setColor(0xf98100);
+            pause.setColor(0xff3b3b);
             pause.setTitle("Please enter what you want to play.");
             pause.setDescription("Usage: `" + Config.get("PREFIX") + "play [url/song name]`");
             channel.sendMessageEmbeds(pause.build()).queue();
@@ -72,7 +76,7 @@ public class PlayCommand implements ICommand {
 
             if (ytSearched == null) {
                 EmbedBuilder yt = new EmbedBuilder();
-                yt.setColor(0xf98100);
+                yt.setColor(0xff3b3b);
                 yt.setDescription("Youtube returned no results.");
                 channel.sendMessageEmbeds(yt.build()).queue();
                 return;
@@ -90,7 +94,7 @@ public class PlayCommand implements ICommand {
             musicManager.player.setVolume(80);
         }else{
             EmbedBuilder other = new EmbedBuilder();
-            other.setColor(0xf98100);
+            other.setColor(0xff3b3b);
             other.setDescription("Please join a voice channel to use this command!");
             channel.sendMessageEmbeds(other.build()).queue();
         }
@@ -98,10 +102,10 @@ public class PlayCommand implements ICommand {
 
     private boolean isUrl(String input) {
         try {
-            new URL(input);
+            new URI(input).toURL();
 
             return true;
-        } catch (MalformedURLException ignored) {
+        } catch (MalformedURLException | URISyntaxException ignored) {
             return false;
         }
     }
@@ -110,17 +114,17 @@ public class PlayCommand implements ICommand {
     private String searchYoutube(String input) {
         try {
             List<SearchResult> results = youTube.search()
-                    .list("id,snippet")
+                    .list(Collections.singletonList("id,snippet"))
                     .setQ(input)
                     .setMaxResults(1L)
-                    .setType("video")
+                    .setType(Collections.singletonList("video"))
                     .setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)")
                     .setKey(Config.get("YOUTUBE"))
                     .execute()
                     .getItems();
 
             if (!results.isEmpty()) {
-                String videoId = results.get(0).getId().getVideoId();
+                String videoId = results.getFirst().getId().getVideoId();
 
                 return "https://www.youtube.com/watch?v=" + videoId;
             }
@@ -132,8 +136,8 @@ public class PlayCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Can play music from Youtube, Soundcloud, & Bandcamp!\n" +
-                "`" + Config.get("prefix") + getName() + " <url> **or** [Song Name]`";
+        return "Can play music from Youtube, Soundcloud, & Bandcamp!" + "\n"
+                + Config.get("prefix") + getName() + " <url> **or** [Song Name]";
     }
 
     @Override

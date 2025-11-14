@@ -3,10 +3,11 @@ package com.ontrexdex.trexbot.commands.music.playlist;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
@@ -33,7 +34,7 @@ public class QueueCommand implements ICommand {
         // A reminder to myself: Make it where people can see past 20 when they run the command
         // Example being t-q 40 will show tracks 20 - 40. The limit is there so it won't spam the channel
 
-        int trackCount = Math.min(queue.size(), 20);
+        int trackCount = Math.min(queue.size(), 15);
         List<AudioTrack> tracks = new ArrayList<>(queue);
         EmbedBuilder builder = new EmbedBuilder()
                 .setTitle("Current Queue (Total: " + queue.size() + ")");
@@ -67,8 +68,8 @@ public class QueueCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Displays the songs currently in queue" + "\n"
-                + "`" + Config.get("prefix") + getName() + "`";
+        return "Displays songs queued up." + "\n"
+                + Config.get("prefix") + getName();
     }
 
     @Override

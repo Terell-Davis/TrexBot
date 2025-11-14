@@ -3,9 +3,10 @@ package com.ontrexdex.trexbot.commands.music.control;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import me.duncte123.botcommons.messaging.EmbedUtils;
+
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.channel.middleman.AudioChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -25,6 +26,7 @@ public class EndCommand implements ICommand {
             channel.sendMessage("Bot is currently not in a voice channel!").queue();
             return;
         }
+
         AudioChannel audioChannel = audioManager.getConnectedChannel();
 
         if (!audioChannel.getMembers().contains(ctx.getMember())) {
@@ -40,8 +42,8 @@ public class EndCommand implements ICommand {
         musicManager.player.setPaused(false);
 
         channel.sendMessageEmbeds(EmbedUtils.embedMessage(String.format(
-                "🛑 Stopping song and Clearing the queue"
-        )).setColor(0xf98100).build()).queue();
+                "🛑 Stopping song and clearing queue."
+        )).setColor(0xff3b3b).build()).queue();
     }
 
     @Override
@@ -52,7 +54,7 @@ public class EndCommand implements ICommand {
     @Override
     public String getHelp() {
         return "Clears the current queue and leaves the voice channel" + "\n"
-        + "`" + Config.get("prefix") + getName() + "`";
+                + Config.get("prefix") + getName();
     }
 
     @Override

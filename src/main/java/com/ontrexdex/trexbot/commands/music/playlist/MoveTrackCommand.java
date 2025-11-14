@@ -3,12 +3,13 @@ package com.ontrexdex.trexbot.commands.music.playlist;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -84,13 +85,6 @@ public class MoveTrackCommand implements ICommand {
             channel.sendMessage("You tried to break something didn't you?").queue();
             channel.sendMessage("How about not?").queue();
         }
-
-
-
-
-
-
-
     }
 
     @Override
@@ -100,7 +94,9 @@ public class MoveTrackCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return null;
+        return "Moves the selected song in the queue to another index" + "\n"
+                + Config.get("prefix") + getName() + " {fromIndex} {toIndex}";
+        // "ofc this was breaking shit " + Config.get("PREFIX") + "Bull Text";
     }
 
     @Override

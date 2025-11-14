@@ -1,4 +1,4 @@
-package com.ontrexdex.trexbot.commands.music.musicassets;
+package com.ontrexdex.trexbot.commands.music.handlers;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;

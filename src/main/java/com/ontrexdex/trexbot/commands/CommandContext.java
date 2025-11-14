@@ -1,7 +1,7 @@
 package com.ontrexdex.trexbot.commands;
 
-
 import me.duncte123.botcommons.commands.ICommandContext;
+
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 

@@ -3,11 +3,12 @@ package com.ontrexdex.trexbot.commands.music.playlist;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -86,7 +87,8 @@ public class DeleteTrackCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Usage: `" + Config.get("prefix") + "deletetrack [Track #]`";
+        return  "Removes the  specified track from the queue." + "\n"
+                + Config.get("prefix") + getName() + "{Track #}";
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.ontrexdex.trexbot.commands.music.control;
 
+import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
+
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
@@ -50,6 +52,7 @@ public class JoinCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Bot joins voice channel";
+        return "Tells the bot to join the voice channel you are currently connected." + "\n"
+                + Config.get("prefix") + getName();
     }
 }

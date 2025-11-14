@@ -3,11 +3,12 @@ package com.ontrexdex.trexbot.commands.music.control;
 import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.TrackScheduler;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.TrackScheduler;
 import com.ontrexdex.trexbot.commands.music.playlist.NowPlayingCommand;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -28,7 +29,7 @@ public class SkipCommand implements ICommand {
             if(memberVoiceState.inAudioChannel()) {
                 if (player.getPlayingTrack() == null) {
                     EmbedBuilder empty = new EmbedBuilder();
-                    empty.setColor(0xf98100);
+                    empty.setColor(0xff3b3b);
                     empty.setDescription("The Player isn't playing anything");
                     channel.sendMessageEmbeds(empty.build()).queue();
                     return;
@@ -42,7 +43,7 @@ public class SkipCommand implements ICommand {
 
             }else{
                 EmbedBuilder other = new EmbedBuilder();
-                other.setColor(0xf98100);
+                other.setColor(0xA3BE8C);
                 other.setDescription("Please join a voice channel to use this command!");
                 channel.sendMessageEmbeds(other.build()).queue();
             }
@@ -55,8 +56,8 @@ public class SkipCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Skips the current song playing"+ "\n"
-                + "`" + Config.get("prefix") + getName() + "`";
+        return "Skips the current song playing" + "\n"
+                + Config.get("prefix") + getName();
     }
 
     @Override

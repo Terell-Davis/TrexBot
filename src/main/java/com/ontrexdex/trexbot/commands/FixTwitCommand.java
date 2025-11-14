@@ -1,14 +1,14 @@
 package com.ontrexdex.trexbot.commands;
 
 import com.ontrexdex.trexbot.Config;
+
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-
 
 import java.util.Arrays;
 import java.util.List;
 
-public class FixTwitCommand implements ICommand{
+public class FixTwitCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
@@ -28,7 +28,8 @@ public class FixTwitCommand implements ICommand{
     @Override
     public String getHelp() {
         return "Fixes the Embeds for twitter links" + "\n"
-                + "Reply to a message with `" + Config.get("prefix") + getName() + "`";
+                + "Reply to a message with " + Config.get("prefix") + getName() + "\n"
+                + "> -# I'm not calling it X. Stupid ahh name";
     }
 
     @Override

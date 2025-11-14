@@ -1,5 +1,6 @@
-package com.ontrexdex.trexbot.commands.music.musicassets;
+package com.ontrexdex.trexbot.commands.music.handlers;
 
+import com.ontrexdex.trexbot.Config;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
@@ -8,7 +9,9 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import dev.lavalink.youtube.YoutubeAudioSourceManager;
+import dev.lavalink.youtube.YoutubeSourceOptions;
 import dev.lavalink.youtube.clients.*;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -23,14 +26,18 @@ public class PlayerManager {
 
     public PlayerManager() {
         this.musicManagers = new HashMap<>();
-
         this.playerManager = new DefaultAudioPlayerManager();
-
-        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(true, new WebWithThumbnail(),
-                new AndroidMusicWithThumbnail(), new TvHtml5EmbeddedWithThumbnail(), new MusicWithThumbnail());
-        youtube.useOauth2(null, false);
+        YoutubeSourceOptions options = new YoutubeSourceOptions().setAllowSearch(true)
+                .setRemoteCipher("https://cipher.kikkia.dev/",null, "TrexBot");
+        /* ^ A very very lovely person has a public server for this, bless them. Can replace with a private but already
+        annoyed that damn Google keeps breaking stuff.
+        * */
+        YoutubeAudioSourceManager youtube = new dev.lavalink.youtube.YoutubeAudioSourceManager(options,
+                new TvHtml5EmbeddedWithThumbnail());
 
         playerManager.registerSourceManager(youtube);
+
+        youtube.useOauth2(Config.get("RFTOKEN"), true);
 
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);

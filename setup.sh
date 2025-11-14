@@ -9,7 +9,7 @@ if [ -f .env ]; then
   echo ".env file found. Updating..."
 else
   echo "Copying env-example to .env..."
-  cp env-example .env
+  cp env-template .env
 fi
 
 echo "Discord API Key: "

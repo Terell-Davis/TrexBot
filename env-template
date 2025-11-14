@@ -1,6 +1,8 @@
+## Rename to .env
 TOKEN=discordkey
 PREFIX=t-
 OWNER_ID=ownerid
-WEBHOOK_URL=quote
+WEBHOOK_URL=webhooklink
 YOUTUBE=ytapikey
+RFTOKEN=
 ASSETS=

@@ -1,12 +1,14 @@
 package com.ontrexdex.trexbot.commands.music.playlist;
 
+import com.ontrexdex.trexbot.Config;
 import com.ontrexdex.trexbot.commands.CommandContext;
 import com.ontrexdex.trexbot.commands.ICommand;
-import com.ontrexdex.trexbot.commands.music.musicassets.GuildMusicManager;
-import com.ontrexdex.trexbot.commands.music.musicassets.PlayerManager;
+import com.ontrexdex.trexbot.commands.music.handlers.GuildMusicManager;
+import com.ontrexdex.trexbot.commands.music.handlers.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -53,7 +55,9 @@ public class NowPlayingCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Shows the currently playing track";
+        return "Shows the title & duration of the song currently playing." + "\n"
+                + Config.get("prefix") + getName();
+        // "Shows the currently playing track" + Config.get("PREFIX") + "Fix this later";
     }
 
     @Override
