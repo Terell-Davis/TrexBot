@@ -1,6 +1,14 @@
-FROM openjdk:21
+FROM gradle:9.2.1-jdk21
 
-RUN mkdir "TrexBot"
-WORKDIR /TrexBot
-COPY ./bin /TrexBot/
-Copy ./lib /TrexBot/
+WORKDIR /app
+COPY . .
+
+RUN ./gradlew clean installShadowDist
+RUN rm -rf bin
+RUN mv build/install/TrexBot-shadow/bin bin
+RUN rm -rf lib
+RUN mv build/install/TrexBot-shadow/lib lib
+
+COPY .env bin/.env
+
+RUN bin/TrexBot

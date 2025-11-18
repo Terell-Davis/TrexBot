@@ -1,0 +1,6 @@
+services:
+  trexbot:
+    container_name: trexbot
+    build:
+      context: .
+      dockerfile: Dockerfile
