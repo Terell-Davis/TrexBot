@@ -11,4 +11,4 @@ RUN mv build/install/TrexBot-shadow/lib lib
 
 COPY .env bin/.env
 
-RUN bin/TrexBot
+ENTRYPOINT ["bash", "bin/TrexBot"]
