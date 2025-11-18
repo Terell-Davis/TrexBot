@@ -18,6 +18,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
@@ -37,7 +38,11 @@ public class PlayerManager {
 
         playerManager.registerSourceManager(youtube);
 
-        youtube.useOauth2(Config.get("RFTOKEN"), true);
+        if (Config.get("RFTOKEN") != null || Objects.equals(Config.get("YTSKIPINI"), "true")) {
+            youtube.useOauth2(Config.get("RFTOKEN"), true);
+        } else {
+            youtube.useOauth2(null, false);
+        }
 
         AudioSourceManagers.registerRemoteSources(playerManager);
         AudioSourceManagers.registerLocalSource(playerManager);
@@ -76,7 +81,7 @@ public class PlayerManager {
                 AudioTrack firstTrack = playlist.getSelectedTrack();
 
                 if (firstTrack == null) {
-                    firstTrack = playlist.getTracks().get(0);
+                    firstTrack = playlist.getTracks().getFirst();
                 }
 
                 EmbedBuilder builder = new EmbedBuilder();

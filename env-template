@@ -4,5 +4,9 @@ PREFIX=t-
 OWNER_ID=ownerid
 WEBHOOK_URL=webhooklink
 YOUTUBE=ytapikey
-RFTOKEN=
 ASSETS=
+# If you don't already have a refresh token keeps these settings.
+# Once you launch the bot, check the console for a OAuth prompt.
+# Afterwards your RF Token will be generated paste that in and change "YTSKIPINI" to 'true'.
+RFTOKEN=
+YTSKIPINI=false
