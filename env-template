@@ -4,7 +4,9 @@ PREFIX=t-
 OWNER_ID=
 WEBHOOK_URL=
 YOUTUBE=ytapikey
-ASSETS=../src/main/java/com/ontrexdex/trexbot/assets/
+# Remember to change this if you are not using docker or placing the folder somewhere else.
+ASSETS=/app/assets/repost-images/
+# ASSETS=../assets/repost-images/
 # If you don't already have a refresh token keeps these settings.
 # Once you launch the bot, check the console for a OAuth prompt.
 # Afterwards your RF Token will be generated paste that in and change "YTSKIPINI" to 'true'.
