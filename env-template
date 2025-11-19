@@ -1,10 +1,10 @@
 ## Rename to .env
-TOKEN=discordkey
+TOKEN=
 PREFIX=t-
-OWNER_ID=ownerid
-WEBHOOK_URL=webhooklink
+OWNER_ID=
+WEBHOOK_URL=
 YOUTUBE=ytapikey
-ASSETS=
+ASSETS=../src/main/java/com/ontrexdex/trexbot/assets/
 # If you don't already have a refresh token keeps these settings.
 # Once you launch the bot, check the console for a OAuth prompt.
 # Afterwards your RF Token will be generated paste that in and change "YTSKIPINI" to 'true'.
