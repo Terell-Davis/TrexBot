@@ -14,25 +14,17 @@ public class RepostCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
-        //String path = Config.get("ASSETS");
-
         // Get a list of the files in the folder, doing this so you can just drag and drop photos in a folder
         List<String> repost = new java.util.ArrayList<>(List.of());
 
         File folder = new File(Config.get("ASSETS"));
         File[] listOfFiles = folder.listFiles();
-
-        System.out.println("Path in Env:" + Config.get("ASSETS"));
         System.out.println("Folder Path: " + folder.getAbsolutePath());
 
         if(listOfFiles != null) {
             for (File listOfFile : listOfFiles) {
                 if (listOfFile.isFile()) {
                     repost.add(listOfFile.getName());
-                    System.out.println("File " + listOfFile.getName()
-                            .toLowerCase().replaceAll("\\s+",""));
-                } else if (listOfFile.isDirectory()) {
-                    System.out.println("No Files");
                 }
             }
             Random ran = new Random();
@@ -49,7 +41,7 @@ public class RepostCommand implements ICommand {
         } else {
             EmbedBuilder other = new EmbedBuilder();
             other.setColor(0xA3BE8C);
-            other.setDescription("No Files Found");
+            other.setDescription("Folder reported back null.");
             channel.sendMessageEmbeds(other.build()).queue();
         }
     }
