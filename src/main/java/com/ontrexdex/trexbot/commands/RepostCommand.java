@@ -2,11 +2,11 @@ package com.ontrexdex.trexbot.commands;
 
 import com.ontrexdex.trexbot.Config;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.utils.FileUpload;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -18,8 +18,10 @@ public class RepostCommand implements ICommand {
 
         // Get a list of the files in the folder, doing this so you can just drag and drop photos in a folder
         List<String> repost = new java.util.ArrayList<>(List.of());
+
         File folder = new File(Config.get("ASSETS"));
         File[] listOfFiles = folder.listFiles();
+
         if(listOfFiles != null) {
             for (File listOfFile : listOfFiles) {
                 if (listOfFile.isFile()) {
@@ -30,12 +32,16 @@ public class RepostCommand implements ICommand {
                     System.out.println("No Files");
                 }
             }
+            Random ran = new Random();
+            FileUpload file = FileUpload.fromData(new File(Config.get("ASSETS")
+                    + repost.get(ran.nextInt(repost.size()))));
+            channel.sendFiles(file).queue();
+        } else {
+            EmbedBuilder other = new EmbedBuilder();
+            other.setColor(0xA3BE8C);
+            other.setDescription("No Files Found");
+            channel.sendMessageEmbeds(other.build()).queue();
         }
-
-       // List<String> repost = Arrays.asList("repost.gif", "ffxivrepost.gif", "mmeyes.jpg", "suavarepost.gif");
-        Random ran = new Random();
-        FileUpload file = FileUpload.fromData(new File(Config.get("ASSETS") + repost.get(ran.nextInt(repost.size()))));
-        channel.sendFiles(file).queue();
     }
 
     @Override
