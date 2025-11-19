@@ -33,9 +33,16 @@ public class RepostCommand implements ICommand {
                 }
             }
             Random ran = new Random();
-            FileUpload file = FileUpload.fromData(new File(Config.get("ASSETS")
-                    + repost.get(ran.nextInt(repost.size()))));
-            channel.sendFiles(file).queue();
+            if (!repost.isEmpty()) {
+                FileUpload file = FileUpload.fromData(new File(Config.get("ASSETS")
+                        + repost.get(ran.nextInt(repost.size()))));
+                channel.sendFiles(file).queue();
+            } else {
+                EmbedBuilder other = new EmbedBuilder();
+                other.setColor(0xA3BE8C);
+                other.setDescription("List is empty: " + repost);
+                channel.sendMessageEmbeds(other.build()).queue();
+            }
         } else {
             EmbedBuilder other = new EmbedBuilder();
             other.setColor(0xA3BE8C);
