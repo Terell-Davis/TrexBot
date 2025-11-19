@@ -22,6 +22,9 @@ public class RepostCommand implements ICommand {
         File folder = new File(Config.get("ASSETS"));
         File[] listOfFiles = folder.listFiles();
 
+        System.out.println("Path in Env:" + Config.get("ASSETS"));
+        System.out.println("Folder Path: " + folder.getAbsolutePath());
+
         if(listOfFiles != null) {
             for (File listOfFile : listOfFiles) {
                 if (listOfFile.isFile()) {
