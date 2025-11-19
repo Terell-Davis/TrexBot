@@ -1,6 +1,7 @@
 FROM gradle:9.2.1-jdk21
 
 WORKDIR /app
+COPY . .
 
 RUN ./gradlew clean installShadowDist
 RUN rm -rf bin
