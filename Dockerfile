@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN gradle clean installShadowDist
-
+RUN rm -rf bin
 RUN mv build/install/TrexBot-shadow/bin bin
 RUN rm -rf lib
 RUN mv build/install/TrexBot-shadow/lib lib
