@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.AudioChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 public class JoinCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();

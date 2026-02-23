@@ -45,6 +45,7 @@ public class PlayCommand implements ICommand {
         System.out.println(youTube.toString());
     }
 
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         AudioManager audioManager = ctx.getGuild().getAudioManager();

@@ -1,4 +1,4 @@
-# TrexBot 3.0 (beta)
+/home/tdavi1/vscode/trex-labs# TrexBot 3.0 (beta)
 TrexBot is a general purpose Discord bot designed for personal and friends' servers.
 - If you have any suggestions, feel free to open an issue or submit a pull request.
 
@@ -14,7 +14,7 @@ These keys should be entered into a `.env` file at the root of the project.
 
 #### Software Requirements
 
-* JDK 21 (Later versions might work but I only tested with Java 21)
+* JDK 21 (Later versions might work, but I only tested with Java 21)
 * Gradle (9.0 or higher recommended)
 * dos2unix (Optional, for Linux users running specific scripts)
 

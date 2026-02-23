@@ -21,6 +21,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class ShuffleCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getMessage().getChannel().asTextChannel();

@@ -14,6 +14,7 @@ public class HelpCommand implements ICommand {
 
     public HelpCommand(CommandManager manager) { this.manager = manager;}
 
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         List<String> args = ctx.getArgs();

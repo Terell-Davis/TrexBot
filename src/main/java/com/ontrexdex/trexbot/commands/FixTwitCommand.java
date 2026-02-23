@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FixTwitCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();

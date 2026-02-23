@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EndCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         PlayerManager playerManager = PlayerManager.getInstance();

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class DeleteTrackCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getMessage().getChannel().asTextChannel();

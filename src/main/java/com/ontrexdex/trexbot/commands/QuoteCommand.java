@@ -10,7 +10,6 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
-import javax.sound.midi.MetaMessage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,6 +27,7 @@ public class QuoteCommand implements ICommand {
         this.client = builder.build();
     }
 
+    @SuppressWarnings({ "null", "unlikely-arg-type" })
     public void handle(CommandContext ctx) {
         final List<String> args = ctx.getArgs();
         final TextChannel channel = ctx.getMessage().getChannel().asTextChannel();

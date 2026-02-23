@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class PauseCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         PlayerManager playerManager = PlayerManager.getInstance();

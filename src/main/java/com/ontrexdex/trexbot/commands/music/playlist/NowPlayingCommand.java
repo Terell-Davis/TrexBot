@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class NowPlayingCommand implements ICommand {
+    @SuppressWarnings("null")
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getMessage().getChannel().asTextChannel();
