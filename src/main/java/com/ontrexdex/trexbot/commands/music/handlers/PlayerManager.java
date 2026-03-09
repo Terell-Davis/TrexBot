@@ -12,6 +12,7 @@ import dev.lavalink.youtube.YoutubeAudioSourceManager;
 import dev.lavalink.youtube.YoutubeSourceOptions;
 import dev.lavalink.youtube.clients.*;
 
+import dev.lavalink.youtube.clients.skeleton.Client;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -30,12 +31,12 @@ public class PlayerManager {
         this.playerManager = new DefaultAudioPlayerManager();
         YoutubeSourceOptions options = new YoutubeSourceOptions().setAllowSearch(true)
                 .setRemoteCipher("https://cipher.kikkia.dev/",null, "TrexBot");
-        /* ^ A very very lovely person has a public server for this, bless them. Can replace with a private but already
+        /* ^ A very, very lovely person has a public server for this, bless them. Can replace with a private but already
         annoyed that damn Google keeps breaking stuff.
         * */
-        YoutubeAudioSourceManager youtube = new dev.lavalink.youtube.YoutubeAudioSourceManager(options,
-                new TvHtml5EmbeddedWithThumbnail());
 
+        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(options, new Client[] {
+                new MusicWithThumbnail(), new WebWithThumbnail() });
         playerManager.registerSourceManager(youtube);
 
         if (Config.get("RFTOKEN") != null || Objects.equals(Config.get("YTSKIPINI"), "true")) {
